@@ -35,7 +35,8 @@ _plex_session.verify = False
 # Your TV library name in Plex. Overridden by --tv-library CLI argument (default: TV Shows).
 TV_LIBRARY_NAME = 'TV Shows'
 
-# Suffixes to strip from parsed titles (case-insensitive). For example: `Pilot [HD]` -> `Pilot`
+# Suffixes to strip from parsed titles (case-insensitive).
+# For example, if `HD` is listed here, then `Pilot [HD]` will be stripped to `Pilot`.
 QUALITY_VALUES_TO_STRIP = ('HD', '4K', '480p', '720p', '1080p')
 
 # ============================================================
