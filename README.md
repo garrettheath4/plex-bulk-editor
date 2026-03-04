@@ -34,13 +34,20 @@ pipenv shell
    ```
 
 2. **Configuration** (optional)
-   In `plex_bulk_editor.py` you can change:
-   - `PLEX_URL` — Plex server URL (default uses HTTPS and hostname `cosmia.gh4.red:32400`)
-   - `TV_LIBRARY_NAME` — TV library name in Plex (default: `TV Shows`)
+   - **Plex token** — Set `PLEX_TOKEN` (see above).
+   - **Plex URL** — Use `--plex-url` (default: `http://localhost:32400`). Use `https://` if your server requires secure connections.
+   - **TV library** — Use `--tv-library` (default: `TV Shows`) if your Plex TV library has a different name.
 
    The script uses a session that skips SSL verification (for self-signed certs on LAN).
 
 ## Usage
+
+Optional global arguments (can appear before the command):
+
+| Argument | Default | Description |
+|----------|---------|-------------|
+| `--plex-url URL` | `http://localhost:32400` | Plex server URL |
+| `--tv-library NAME` | `TV Shows` | Plex TV library name |
 
 All commands that modify or list a show require the **show name** as the first argument after the command (exact name as in Plex).
 
@@ -59,8 +66,11 @@ All commands that modify or list a show require the **show name** as the first a
 # Get your Plex token (no PLEX_TOKEN needed)
 ./plex_bulk_editor.py find-token
 
-# List specials for a show
+# List specials (uses default http://localhost:32400 and "TV Shows" library)
 ./plex_bulk_editor.py list-specials "Star Trek: The Next Generation"
+
+# Custom Plex URL and TV library
+./plex_bulk_editor.py --plex-url https://myplex.example.com:32400 --tv-library Television list-specials "Star Trek: The Next Generation"
 
 # Preview filename-based title updates
 ./plex_bulk_editor.py edit-filenames "Star Trek: The Next Generation" --dry-run
